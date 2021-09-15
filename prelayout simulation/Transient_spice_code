@@ -1,0 +1,19 @@
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+I N005 0 PULSE ( 0 3u 0 .5m .5m 0 1m 0 )
+Vdd N001 0 1.5
+XM1 N001 N005 N005 N002 sky130_fd_pr__pfet_01v8 l=5 w=50
+XM2 N001 N005 Vb N003 sky130_fd_pr__pfet_01v8 l=5 w=50
+XM4 N001 N005 Va N004 sky130_fd_pr__pfet_01v8 l=5 w=50
+XM3 Vb Vb 0 N008 sky130_fd_pr__nfet_01v8 l=5 w=50
+XM5 Va Va 0 N006 sky130_fd_pr__nfet_01v8 l=5 w=12.5
+XM6 N001 Va Vo N007 sky130_fd_pr__nfet_01v8 l=5 w=50
+XM7 Vo Vb 0 N009 sky130_fd_pr__nfet_01v8 l=5 w=50
+
+.tran .01m 5m
+
+
+.control
+run
+plot v(Vo)
+.endc
+.end
